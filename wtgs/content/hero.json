@@ -1,0 +1,11 @@
+{
+  "eyebrow": "New Release · 2025",
+  "headline": "The Art of *Becoming*",
+  "subtitle": "A transformative journey through the hidden landscapes of human potential — for those who dare to rewrite their story.",
+  "buttons": [
+    { "label": "Get the Book", "action": "#buy-sec", "style": "filled" },
+    { "label": "Attend a Workshop", "action": "#events-sec", "style": "outline" }
+  ],
+  "genreTags": ["Self-Development", "Psychology", "Leadership"],
+  "bookCoverImage": ""
+}
