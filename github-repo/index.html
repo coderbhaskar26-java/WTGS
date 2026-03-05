@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="warm-ivory">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Loading…</title>
+<meta name="description" content=""/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Playfair+Display:ital,wght@0,400;1,400&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   8 THEMES — complete colour systems, not just accent
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+[data-theme="warm-ivory"]{
+  --bg:#faf8f4;--bg2:#f2ede4;--bg3:#e6ddd0;
+  --ink:#1a1208;--ink2:#5c5040;--ink3:#9c8870;
+  --acc:#a07840;--acc-l:#c8a060;--acc-ll:rgba(160,120,64,.13);
+  --surface:#fff;--bdr:rgba(26,18,8,.09);--bdr2:rgba(26,18,8,.05);
+  --nav-bg:rgba(250,248,244,.93);--dark:#1a1208;--dark2:#2d2010;
+  --serif:'Cormorant Garamond',Georgia,serif;
+}
+[data-theme="obsidian"]{
+  --bg:#0e0c0a;--bg2:#161410;--bg3:#1e1c16;
+  --ink:#f0ece4;--ink2:#a09880;--ink3:#6a6050;
+  --acc:#c8a050;--acc-l:#e0c070;--acc-ll:rgba(200,160,80,.14);
+  --surface:#161410;--bdr:rgba(240,236,228,.09);--bdr2:rgba(240,236,228,.05);
+  --nav-bg:rgba(14,12,10,.95);--dark:#060504;--dark2:#0a0906;
+  --serif:'Cormorant Garamond',Georgia,serif;
+}
+[data-theme="forest-sage"]{
+  --bg:#f2f5f0;--bg2:#e4ebe0;--bg3:#d2ddc8;
+  --ink:#0e1a10;--ink2:#3a5040;--ink3:#7a9278;
+  --acc:#4a7054;--acc-l:#6a9870;--acc-ll:rgba(74,112,84,.13);
+  --surface:#fff;--bdr:rgba(14,26,16,.09);--bdr2:rgba(14,26,16,.05);
+  --nav-bg:rgba(242,245,240,.93);--dark:#0e1a10;--dark2:#162018;
+  --serif:'Libre Baskerville',Georgia,serif;
+}
+[data-theme="arctic-blue"]{
+  --bg:#f2f6fa;--bg2:#e4edf6;--bg3:#ccdcee;
+  --ink:#0a1828;--ink2:#304860;--ink3:#6888a8;
+  --acc:#2660a0;--acc-l:#4880c0;--acc-ll:rgba(38,96,160,.13);
+  --surface:#fff;--bdr:rgba(10,24,40,.09);--bdr2:rgba(10,24,40,.05);
+  --nav-bg:rgba(242,246,250,.93);--dark:#0a1828;--dark2:#102030;
+  --serif:'DM Sans',system-ui,sans-serif;
+}
+[data-theme="dusty-rose"]{
+  --bg:#faf4f2;--bg2:#f0e4e0;--bg3:#e4d0ca;
+  --ink:#200c08;--ink2:#604840;--ink3:#a07870;
+  --acc:#a04838;--acc-l:#c86858;--acc-ll:rgba(160,72,56,.13);
+  --surface:#fff;--bdr:rgba(32,12,8,.09);--bdr2:rgba(32,12,8,.05);
+  --nav-bg:rgba(250,244,242,.93);--dark:#200c08;--dark2:#2e1410;
+  --serif:'Playfair Display',Georgia,serif;
+}
+[data-theme="midnight-scholar"]{
+  --bg:#f2f2f8;--bg2:#e4e4f4;--bg3:#d0d0e8;
+  --ink:#080828;--ink2:#303068;--ink3:#7070a8;
+  --acc:#6040a0;--acc-l:#8060c0;--acc-ll:rgba(96,64,160,.13);
+  --surface:#fff;--bdr:rgba(8,8,40,.09);--bdr2:rgba(8,8,40,.05);
+  --nav-bg:rgba(242,242,248,.93);--dark:#080828;--dark2:#101040;
+  --serif:'Cormorant Garamond',Georgia,serif;
+}
+[data-theme="saffron"]{
+  --bg:#fffaf0;--bg2:#fff2d8;--bg3:#ffe8b8;
+  --ink:#1a0c00;--ink2:#604820;--ink3:#a08040;
+  --acc:#c06010;--acc-l:#e08030;--acc-ll:rgba(192,96,16,.13);
+  --surface:#fff;--bdr:rgba(26,12,0,.09);--bdr2:rgba(26,12,0,.05);
+  --nav-bg:rgba(255,250,240,.93);--dark:#1a0c00;--dark2:#2a1800;
+  --serif:'Cormorant Garamond',Georgia,serif;
+}
+[data-theme="raw-concrete"]{
+  --bg:#f4f4f2;--bg2:#eaeae6;--bg3:#d8d8d2;
+  --ink:#161614;--ink2:#505050;--ink3:#909090;
+  --acc:#161614;--acc-l:#404040;--acc-ll:rgba(22,22,20,.1);
+  --surface:#fff;--bdr:rgba(22,22,20,.1);--bdr2:rgba(22,22,20,.05);
+  --nav-bg:rgba(244,244,242,.95);--dark:#161614;--dark2:#202020;
+  --serif:'DM Sans',system-ui,sans-serif;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BASE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root{
+  --sans:'DM Sans',system-ui,sans-serif;
+  --nav-h:68px;--max:1200px;--r:4px;
+  --px:clamp(24px,6vw,88px); /* enforced horizontal breathing room */
+  --ease:cubic-bezier(.25,.46,.45,.94);
+  --ease2:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+img{max-width:100%;display:block;object-fit:cover}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font-family:inherit}
+::selection{background:var(--acc-ll);color:var(--ink)}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--acc)}
+
+/* LOADER */
+#loader{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .5s}
+#loader.gone{opacity:0;pointer-events:none}
+.ring{width:38px;height:38px;border:2px solid var(--bdr);border-top-color:var(--acc);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* NAV */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:800;height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--px);
+  transition:background .45s var(--ease),box-shadow .45s;
+}
+#nav.solid{background:var(--nav-bg);backdrop-filter:blur(20px) saturate(1.6);box-shadow:0 1px 0 var(--bdr)}
+.nav-logo{font-family:var(--serif);font-size:1.45rem;font-weight:400;letter-spacing:.02em}
+.nav-logo em{color:var(--acc);font-style:italic}
+.nav-links{display:flex;gap:34px;list-style:none;align-items:center}
+.nav-links a{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);transition:color .2s}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{background:var(--ink)!important;color:var(--bg)!important;padding:10px 24px;border-radius:var(--r);transition:background .2s!important}
+.nav-cta:hover{background:var(--acc)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px}
+.hamburger span{display:block;width:24px;height:1.5px;background:var(--ink);transition:.3s var(--ease)}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mob-nav{display:none;position:fixed;inset:0;padding-top:var(--nav-h);z-index:799;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:30px}
+.mob-nav.open{display:flex}
+.mob-nav a{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--ink);transition:color .2s}
+.mob-nav a:hover{color:var(--acc)}
+
+/* HERO */
+#hero{
+  min-height:100svh;display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:60px;
+  padding:calc(var(--nav-h) + 72px) var(--px) 80px;
+  position:relative;overflow:hidden;
+}
+.hero-glow{position:absolute;top:-15%;right:-5%;width:50%;height:75%;background:radial-gradient(ellipse,var(--acc-ll) 0%,transparent 68%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:-10%;left:-5%;width:38%;height:50%;background:radial-gradient(ellipse,var(--acc-ll) 0%,transparent 68%);pointer-events:none;opacity:.5}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:20px}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--acc)}
+.hero-h1{font-family:var(--serif);font-size:clamp(2.8rem,5vw,5.5rem);font-weight:300;line-height:1.06;letter-spacing:-.01em;margin-bottom:22px}
+.hero-h1 em{font-style:italic;color:var(--acc)}
+.hero-sub{font-size:1.05rem;color:var(--ink2);max-width:440px;line-height:1.85;margin-bottom:40px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px}
+
+/* BUTTONS — 3 styles, fully dynamic */
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 30px;border-radius:var(--r);font-size:.77rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border:none;transition:all .25s var(--ease);white-space:nowrap;font-family:var(--sans)}
+.btn-filled{background:var(--ink);color:var(--bg)}
+.btn-filled:hover{background:var(--acc);transform:translateY(-2px);box-shadow:0 10px 32px var(--acc-ll)}
+.btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--bdr)}
+.btn-outline:hover{border-color:var(--acc);color:var(--acc)}
+.btn-ghost{background:transparent;color:var(--acc);padding-left:0;padding-right:0;letter-spacing:.06em}
+.btn-ghost::after{content:' →';transition:transform .2s}
+.btn-ghost:hover::after{transform:translateX(4px)}
+
+.hero-chips{display:flex;gap:9px;flex-wrap:wrap}
+.chip{font-size:.71rem;letter-spacing:.07em;color:var(--ink3);border:1px solid var(--bdr);padding:5px 13px;border-radius:40px}
+
+/* BOOK 3D */
+.book-visual{display:flex;justify-content:center;align-items:center}
+.book-3d{width:clamp(170px,24vw,290px);aspect-ratio:.67;position:relative;transform:perspective(900px) rotateY(-12deg);transition:transform .7s var(--ease2);filter:drop-shadow(36px 36px 60px rgba(0,0,0,.22))}
+.book-3d:hover{transform:perspective(900px) rotateY(-4deg) rotateX(2deg)}
+.book-face{width:100%;height:100%;border-radius:2px 10px 10px 2px;overflow:hidden;background:linear-gradient(145deg,var(--dark2),var(--dark));display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 22px;position:relative}
+.book-face::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--acc),var(--acc-l))}
+.book-spine{position:absolute;left:-12px;top:0;bottom:0;width:12px;background:linear-gradient(90deg,color-mix(in srgb,var(--dark) 80%,black),var(--dark));border-radius:1px 0 0 1px}
+#cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:2px 10px 10px 2px;display:none}
+.book-ttl-txt{font-family:var(--serif);color:rgba(240,228,200,.9);font-size:clamp(.95rem,2.2vw,1.55rem);font-weight:300;text-align:center;line-height:1.25;margin-bottom:14px;z-index:1}
+.book-aut-txt{color:rgba(240,228,200,.38);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;z-index:1}
+.book-deco{width:32px;height:1px;background:var(--acc);position:absolute;bottom:28px;z-index:1}
+
+/* SECTIONS */
+.sec{padding:clamp(80px,11vw,150px) var(--px)}
+.sec-in{max-width:var(--max);margin:0 auto}
+.sec-tag{font-size:.69rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.sec-tag::before{content:'';width:22px;height:1px;background:var(--acc)}
+.sec-h2{font-family:var(--serif);font-size:clamp(1.9rem,4vw,3.7rem);font-weight:300;line-height:1.12;margin-bottom:18px}
+.sec-h2 em{font-style:italic;color:var(--acc)}
+.sec-lead{color:var(--ink2);font-size:1.03rem;line-height:1.85;max-width:580px}
+.divider{width:38px;height:1px;background:var(--acc);margin:28px 0}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1.12fr;gap:80px;align-items:center;margin-top:56px}
+.img-wrap{position:relative}
+.img-box{width:100%;aspect-ratio:.82;border-radius:var(--r);background:linear-gradient(145deg,var(--bg3),var(--bg2));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:5rem;color:var(--bdr);overflow:hidden;position:relative}
+.img-box img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
+.img-frame{position:absolute;bottom:-18px;right:-18px;width:52%;height:52%;border:1px solid var(--acc-ll);border-radius:var(--r);z-index:-1}
+.pull-quote{font-family:var(--serif);font-size:1.42rem;font-style:italic;line-height:1.5;margin:26px 0;padding-left:18px;border-left:2px solid var(--acc);color:var(--ink)}
+.bio{color:var(--ink2);line-height:1.9}.bio p{margin-bottom:14px}
+.sig{font-family:var(--serif);font-size:2.1rem;font-style:italic;color:var(--ink);margin-top:28px}
+
+/* DARK SECTION */
+.dark-sec{background:var(--dark)}
+.dark-sec .sec-tag{color:var(--acc-l)}
+.dark-sec .sec-h2{color:rgba(240,232,216,.95)}
+.dark-sec .sec-lead{color:rgba(240,232,216,.48)}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);margin-top:52px}
+.feat-card{padding:42px 34px;background:rgba(255,255,255,.02);transition:background .3s}
+.feat-card:hover{background:rgba(255,255,255,.05)}
+.feat-num{font-family:var(--serif);font-size:3.2rem;font-weight:300;color:var(--acc);line-height:1;margin-bottom:16px;opacity:.65}
+.feat-title{font-family:var(--serif);font-size:1.35rem;color:rgba(240,232,216,.9);margin-bottom:10px}
+.feat-desc{font-size:.87rem;color:rgba(240,232,216,.4);line-height:1.8}
+
+/* BUY */
+.buy-sec{background:var(--bg2)}
+.store-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:48px}
+.store-btn{display:flex;align-items:center;gap:14px;padding:17px 26px;background:var(--surface);border-radius:var(--r);border:1.5px solid var(--bdr);min-width:195px;transition:all .3s var(--ease);cursor:pointer}
+.store-btn:hover{border-color:var(--acc);transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.09)}
+.store-icon{width:34px;height:34px;border-radius:8px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.store-lbl{font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.store-name{font-size:.93rem;font-weight:500;color:var(--ink)}
+
+/* EVENTS */
+.ev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px;margin-top:48px}
+.ev-card{background:var(--surface);border-radius:8px;overflow:hidden;border:1.5px solid var(--bdr);transition:transform .4s var(--ease2),box-shadow .4s,border-color .3s;display:flex;flex-direction:column}
+.ev-card:hover{transform:translateY(-7px);box-shadow:0 22px 60px rgba(0,0,0,.1);border-color:var(--acc-ll)}
+.ev-banner{height:195px;background:linear-gradient(135deg,var(--dark2),var(--dark));position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.ev-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ev-ph{font-family:var(--serif);font-size:3.5rem;opacity:.15;color:var(--acc)}
+.ev-badge{position:absolute;top:13px;left:13px;background:var(--acc);color:#fff;font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:2px}
+.ev-seats-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.15)}
+.ev-seats-fill{height:100%;background:var(--acc);transition:width .6s var(--ease2)}
+.ev-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.ev-date{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin-bottom:7px}
+.ev-title{font-family:var(--serif);font-size:1.3rem;margin-bottom:9px;line-height:1.3}
+.ev-desc{font-size:.87rem;color:var(--ink2);line-height:1.75;flex:1}
+.ev-footer{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--bdr2)}
+.ev-price{font-family:var(--serif);font-size:1.65rem;font-weight:300}
+.ev-avail{font-size:.7rem;color:var(--ink3)}
+.no-ev{text-align:center;padding:60px 20px;color:var(--ink3);font-family:var(--serif);font-size:1.1rem;font-style:italic}
+
+/* FAQ */
+.faq-sec{background:var(--bg2)}
+.acc-wrap{max-width:740px;margin:48px auto 0;border-top:1px solid var(--bdr)}
+.acc-item{border-bottom:1px solid var(--bdr)}
+.acc-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:24px 0;background:none;border:none;cursor:pointer;font-family:var(--serif);font-size:1.17rem;text-align:left;color:var(--ink);transition:color .2s;gap:16px}
+.acc-btn:hover{color:var(--acc)}
+.acc-icon{width:28px;height:28px;flex-shrink:0;border-radius:50%;border:1.5px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--ink3);transition:transform .4s var(--ease2),border-color .2s,color .2s}
+.acc-btn[aria-expanded=true] .acc-icon{transform:rotate(45deg);border-color:var(--acc);color:var(--acc)}
+.acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease2)}
+.acc-body.open{grid-template-rows:1fr}
+.acc-inner{overflow:hidden}
+.acc-pad{padding:0 0 22px;color:var(--ink2);line-height:1.85;font-size:.94rem}
+
+/* CONTACT */
+.contact-sec{background:var(--dark)}
+.contact-sec .sec-tag{color:var(--acc-l)}
+.contact-sec .sec-h2{color:rgba(240,232,216,.95)}
+.contact-sec .sec-lead{color:rgba(240,232,216,.48)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:52px;align-items:start}
+.cinfo{margin-bottom:24px;display:flex;gap:14px;align-items:flex-start}
+.cinfo-icon{width:42px;height:42px;flex-shrink:0;border-radius:50%;background:var(--acc-ll);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--acc-l)}
+.cinfo-lbl{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,232,216,.38);margin-bottom:3px}
+.cinfo-val{color:rgba(240,232,216,.8);font-size:.93rem}
+.cinfo-val a{color:rgba(240,232,216,.8);transition:color .2s}
+.cinfo-val a:hover{color:var(--acc-l)}
+.social-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.soc-link{display:inline-flex;align-items:center;gap:7px;padding:7px 15px;border:1px solid rgba(255,255,255,.12);border-radius:40px;font-size:.74rem;color:rgba(240,232,216,.5);transition:all .2s}
+.soc-link:hover{border-color:var(--acc-l);color:var(--acc-l)}
+.cform{background:rgba(255,255,255,.04);border-radius:8px;padding:32px;border:1px solid rgba(255,255,255,.07)}
+.flbl{display:block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,232,216,.38);margin-bottom:7px}
+.finp{width:100%;padding:12px 15px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);color:rgba(240,232,216,.9);outline:none;transition:border-color .2s;margin-bottom:14px;font-size:.93rem}
+.finp:focus{border-color:var(--acc)}
+.finp::placeholder{color:rgba(240,232,216,.22)}
+.fta{resize:vertical;min-height:100px}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* FOOTER */
+footer{background:color-mix(in srgb, var(--dark) 90%, black);padding:36px var(--px);text-align:center}
+.f-logo{font-family:var(--serif);font-size:1.25rem;color:rgba(240,232,216,.45);margin-bottom:9px}
+.f-copy{font-size:.73rem;color:rgba(240,232,216,.22);letter-spacing:.06em}
+.f-admin{display:inline-block;margin-top:16px;font-size:.68rem;color:rgba(240,232,216,.1);cursor:pointer;transition:color .2s;border:none;background:none}
+.f-admin:hover{color:var(--acc)}
+
+/* BOOKING MODAL */
+.overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.7);backdrop-filter:blur(14px);align-items:center;justify-content:center;padding:20px}
+.overlay.open{display:flex;animation:fdIn .3s}
+@keyframes fdIn{from{opacity:0}to{opacity:1}}
+.modal{background:var(--surface);border-radius:12px;max-width:500px;width:100%;padding:40px;position:relative;max-height:90svh;overflow-y:auto;animation:slideUp .35s var(--ease2)}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.modal-x{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;background:var(--bg2);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink2);font-size:.95rem;transition:background .2s}
+.modal-x:hover{background:var(--bg3)}
+.m-title{font-family:var(--serif);font-size:1.8rem;font-weight:300;margin-bottom:4px}
+.m-sub{font-size:.83rem;color:var(--acc);margin-bottom:24px;letter-spacing:.04em}
+.m-lbl{display:block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px}
+.m-inp{width:100%;padding:11px 13px;border:1.5px solid var(--bdr);border-radius:var(--r);background:var(--bg);color:var(--ink);outline:none;transition:border-color .2s;margin-bottom:14px}
+.m-inp:focus{border-color:var(--acc)}
+.m-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pay-opts{display:flex;flex-direction:column;gap:9px;margin:12px 0 18px}
+.pay-opt{display:flex;align-items:center;gap:11px;padding:12px 14px;border:1.5px solid var(--bdr);border-radius:var(--r);cursor:pointer;transition:all .2s;font-size:.9rem}
+.pay-opt:hover,.pay-opt.sel{border-color:var(--acc);background:var(--acc-ll)}
+.pay-opt input{accent-color:var(--acc)}
+.pay-detail{background:var(--bg2);border-left:3px solid var(--acc);padding:13px 14px;border-radius:0 var(--r) var(--r) 0;font-size:.87rem;color:var(--ink2);line-height:1.7;margin-bottom:18px;display:none;white-space:pre-wrap}
+.pay-detail.show{display:block}
+.bk-ok{text-align:center;padding:20px 0;display:none}
+.bk-ok .bk-icon{font-size:2.8rem;margin-bottom:14px}
+.bk-ok h3{font-family:var(--serif);font-size:1.55rem;font-weight:300;margin-bottom:7px}
+.bk-ok p{color:var(--ink2);font-size:.89rem}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .85s var(--ease2),transform .85s var(--ease2)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  #hero{grid-template-columns:1fr;gap:44px;text-align:center;padding-top:calc(var(--nav-h) + 48px)}
+  .hero-sub,.hero-btns,.hero-chips{margin-left:auto;margin-right:auto}
+  .hero-btns{justify-content:center}.hero-chips{justify-content:center}.book-visual{order:-1}
+  .about-grid{grid-template-columns:1fr;gap:44px}.img-wrap{max-width:340px;margin:0 auto}
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .nav-links{display:none}.hamburger{display:flex}
+  .feat-grid{grid-template-columns:1fr}
+  .fg2,.m-row{grid-template-columns:1fr}
+  .modal{padding:26px}
+}
+</style>
+</head>
+<body>
+<div id="loader"><div class="ring"></div></div>
+
+<nav id="nav">
+  <div class="nav-logo" id="n-logo">The <em>Author</em></div>
+  <ul class="nav-links" id="n-links">
+    <li><a href="#about-sec">About</a></li>
+    <li><a href="#book-sec">The Book</a></li>
+    <li><a href="#buy-sec">Buy</a></li>
+    <li><a href="#events-sec">Events</a></li>
+    <li><a href="#faq-sec">FAQ</a></li>
+    <li><a href="#contact-sec" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-nav" id="mob">
+  <a href="#about-sec" class="ml">About</a>
+  <a href="#book-sec" class="ml">The Book</a>
+  <a href="#buy-sec" class="ml">Buy</a>
+  <a href="#events-sec" class="ml">Events</a>
+  <a href="#faq-sec" class="ml">FAQ</a>
+  <a href="#contact-sec" class="ml">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div><div class="hero-glow2"></div>
+  <div>
+    <div class="eyebrow" id="h-eyebrow"></div>
+    <h1 class="hero-h1" id="h-headline"></h1>
+    <p class="hero-sub" id="h-sub"></p>
+    <div class="hero-btns" id="h-btns"></div>
+    <div class="hero-chips" id="h-chips"></div>
+  </div>
+  <div class="book-visual">
+    <div class="book-3d">
+      <div class="book-spine"></div>
+      <div class="book-face">
+        <img id="cover-img" alt="Book Cover"/>
+        <div class="book-ttl-txt" id="b-ttl"></div>
+        <div class="book-aut-txt" id="b-aut"></div>
+        <div class="book-deco"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec" id="about-sec">
+  <div class="sec-in">
+    <div class="about-grid">
+      <div class="img-wrap reveal">
+        <div class="img-box"><img id="author-photo" alt="Author"/><span id="author-ph">✦</span></div>
+        <div class="img-frame"></div>
+      </div>
+      <div class="reveal d2">
+        <div class="sec-tag">About the Author</div>
+        <h2 class="sec-h2" id="ab-h2"></h2>
+        <div class="divider"></div>
+        <blockquote class="pull-quote" id="ab-quote"></blockquote>
+        <div class="bio" id="ab-bio"></div>
+        <div class="sig" id="ab-sig"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="sec dark-sec" id="book-sec">
+  <div class="sec-in">
+    <div class="reveal"><div class="sec-tag">The Book</div><h2 class="sec-h2" id="bk-h2"></h2><p class="sec-lead" id="bk-lead"></p></div>
+    <div class="feat-grid" id="feat-grid"></div>
+  </div>
+</section>
+
+<!-- BUY -->
+<section class="sec buy-sec" id="buy-sec">
+  <div class="sec-in" style="text-align:center">
+    <div class="reveal">
+      <div class="sec-tag" style="justify-content:center">Get Your Copy</div>
+      <h2 class="sec-h2" id="st-h2"></h2>
+      <p class="sec-lead" style="margin:0 auto" id="st-lead"></p>
+    </div>
+    <div class="store-grid reveal d2" id="store-grid"></div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="sec" id="events-sec">
+  <div class="sec-in">
+    <div class="reveal"><div class="sec-tag">Events & Workshops</div><h2 class="sec-h2" id="ev-h2"></h2><p class="sec-lead" id="ev-lead"></p></div>
+    <div class="ev-grid" id="ev-grid"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec faq-sec" id="faq-sec">
+  <div class="sec-in">
+    <div class="reveal" style="text-align:center"><div class="sec-tag" style="justify-content:center">FAQ</div><h2 class="sec-h2" id="fq-h2"></h2></div>
+    <div class="acc-wrap" id="acc"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec contact-sec" id="contact-sec">
+  <div class="sec-in">
+    <div class="reveal"><div class="sec-tag">Get in Touch</div><h2 class="sec-h2" id="ct-h2"></h2><p class="sec-lead" id="ct-lead"></p></div>
+    <div class="contact-grid reveal d2">
+      <div>
+        <div class="cinfo" id="c-email-row">
+          <div class="cinfo-icon">✉</div>
+          <div><div class="cinfo-lbl">Email</div><div class="cinfo-val" id="c-email-hint">Contact via form →</div></div>
+        </div>
+        <div class="cinfo" id="c-wa-row" style="display:none">
+          <div class="cinfo-icon">📱</div>
+          <div><div class="cinfo-lbl">WhatsApp</div><a class="cinfo-val" id="c-wa-link" href="#">···</a></div>
+        </div>
+        <div class="cinfo">
+          <div class="cinfo-icon">📍</div>
+          <div><div class="cinfo-lbl">Location</div><div class="cinfo-val" id="c-loc"></div></div>
+        </div>
+        <div class="social-row" id="social-row"></div>
+      </div>
+      <div class="cform">
+        <form id="cform" onsubmit="sendContact(event)">
+          <div class="fg2">
+            <div><label class="flbl">Name</label><input class="finp" id="cf-name" type="text" placeholder="Your name" required/></div>
+            <div><label class="flbl">Email</label><input class="finp" id="cf-email" type="email" placeholder="you@email.com" required/></div>
+          </div>
+          <label class="flbl">Message</label>
+          <textarea class="finp fta" id="cf-msg" placeholder="How can I help?" required></textarea>
+          <button type="submit" class="btn btn-filled" style="width:100%;margin-top:4px" id="cf-btn">Send Message →</button>
+          <div id="cf-status" style="margin-top:12px;font-size:.84rem;display:none"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo" id="f-logo"></div>
+  <div class="f-copy" id="f-copy"></div>
+  <button class="f-admin" onclick="goAdmin()">⚙ Manage Content</button>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div class="overlay" id="bk-overlay">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal()">✕</button>
+    <div id="bk-form-wrap">
+      <div class="m-title">Reserve Your Seat</div>
+      <div class="m-sub" id="bk-ev-name"></div>
+      <div class="m-row">
+        <div><label class="m-lbl">Full Name</label><input class="m-inp" id="bk-name" type="text" placeholder="Your full name" required/></div>
+        <div><label class="m-lbl">Email</label><input class="m-inp" id="bk-email" type="email" placeholder="you@email.com" required/></div>
+      </div>
+      <label class="m-lbl">WhatsApp / Phone</label>
+      <input class="m-inp" id="bk-phone" type="tel" placeholder="+91 ..."/>
+      <div class="m-row" style="margin-bottom:14px">
+        <div><label class="m-lbl">Seats</label>
+          <select class="m-inp" id="bk-seats" style="margin-bottom:0">
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+          </select>
+        </div>
+        <div><label class="m-lbl">Event Price</label><div class="m-inp" id="bk-price-show" style="display:flex;align-items:center;font-family:var(--serif);font-size:1.2rem;font-weight:300;background:var(--bg2);cursor:default"></div></div>
+      </div>
+      <label class="m-lbl" style="margin-bottom:10px">Payment Method</label>
+      <div class="pay-opts" id="pay-opts"></div>
+      <div class="pay-detail" id="pay-detail"></div>
+      <button class="btn btn-filled" style="width:100%" id="bk-confirm-btn" onclick="confirmBooking()">Confirm Booking →</button>
+    </div>
+    <div class="bk-ok" id="bk-ok">
+      <div class="bk-icon">✅</div>
+      <h3>You're Confirmed!</h3>
+      <p>Payment details have been sent to your email. The author will follow up within 24 hours.</p>
+      <p id="bk-ref-display" style="margin-top:12px;font-size:.8rem;color:var(--ink3)"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// CONFIG — set your Cloudflare Worker URL here
+// This is the only thing to change after deploy
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const WORKER = 'https://your-worker.your-subdomain.workers.dev';
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+let C = {}; // all content
+let currentEventIdx = null;
+let bookingRef = null;
+
+// ── BOOT: load all JSON from same CDN edge ──
+// No third-party CMS, no latency, instant from Cloudflare cache
+async function boot() {
+  try {
+    const files = ['site','hero','about','book','stores','events','faq','contact'];
+    const results = await Promise.all(
+      files.map(f => fetch(`./content/${f}.json`).then(r => r.json()))
+    );
+    files.forEach((f, i) => C[f] = results[i]);
+  } catch(e) {
+    console.error('Content load failed:', e);
+  }
+  applyTheme();
+  render();
+  loadPrivateContactHints(); // fetch masked contact info from Worker
+  document.getElementById('loader').classList.add('gone');
+  initNav();
+  initReveal();
+}
+
+// ── THEME ──────────────────────────────────
+function applyTheme() {
+  const t = C.site?.theme || 'warm-ivory';
+  document.documentElement.setAttribute('data-theme', t);
+  if (C.site?.accentOverride) {
+    const a = C.site.accentOverride;
+    document.documentElement.style.setProperty('--acc', a);
+  }
+}
+
+// ── RENDER ─────────────────────────────────
+function pi(s) { return (s||'').replace(/\*([^*]+)\*/g,'<em>$1</em>'); }
+function tx(id, v) { const el=document.getElementById(id); if(el) el.textContent = v||''; }
+function ht(id, v) { const el=document.getElementById(id); if(el) el.innerHTML = pi(v||''); }
+
+function render() {
+  const {site,hero,about,book,stores,events,faq,contact} = C;
+
+  // Meta
+  document.title = site?.siteTitle || 'The Author';
+  document.querySelector('meta[name=description]').content = site?.metaDescription || '';
+
+  // Nav + footer
+  ht('n-logo', site?.siteName || 'The Author');
+  tx('f-logo', site?.siteName || 'The Author');
+  tx('f-copy', contact?.footerText || '');
+
+  // Hero
+  tx('h-eyebrow', hero?.eyebrow);
+  ht('h-headline', hero?.headline);
+  tx('h-sub', hero?.subtitle);
+
+  // Dynamic buttons — fully configurable count + style
+  document.getElementById('h-btns').innerHTML = (hero?.buttons || []).map(b => {
+    const styleClass = b.style === 'outline' ? 'btn-outline' : b.style === 'ghost' ? 'btn-ghost' : 'btn-filled';
+    const href = b.action?.startsWith('#') ? b.action : b.customUrl || '#';
+    return `<a class="btn ${styleClass}" href="${href}">${b.label}</a>`;
+  }).join('');
+
+  document.getElementById('h-chips').innerHTML = (hero?.genreTags || [])
+    .map(t => `<span class="chip">${t}</span>`).join('');
+
+  // Book cover
+  const ci = document.getElementById('cover-img');
+  const bt = document.getElementById('b-ttl');
+  const ba = document.getElementById('b-aut');
+  if (hero?.bookCoverImage) {
+    ci.src = hero.bookCoverImage; ci.style.display = 'block';
+    bt.style.display = 'none'; ba.style.display = 'none';
+  } else {
+    ci.style.display = 'none';
+    bt.textContent = (hero?.headline || '').replace(/\*/g, '');
+    ba.textContent = about?.authorName || '';
+    bt.style.display = 'block'; ba.style.display = 'block';
+  }
+
+  // About
+  const ap = document.getElementById('author-photo');
+  const aph = document.getElementById('author-ph');
+  if (about?.authorPhoto) { ap.src = about.authorPhoto; ap.style.display = 'block'; aph.style.display = 'none'; }
+  else { ap.style.display = 'none'; aph.style.display = 'flex'; }
+  ht('ab-h2', about?.heading);
+  tx('ab-quote', about?.pullQuote);
+  document.getElementById('ab-bio').innerHTML = (about?.bio || []).map(p => `<p>${p}</p>`).join('');
+  tx('ab-sig', about?.authorName);
+
+  // Book features
+  ht('bk-h2', book?.heading);
+  tx('bk-lead', book?.leadText);
+  document.getElementById('feat-grid').innerHTML = (book?.features || []).map(f => `
+    <div class="feat-card reveal">
+      <div class="feat-num">${f.number}</div>
+      <div class="feat-title">${f.title}</div>
+      <div class="feat-desc">${f.description}</div>
+    </div>`).join('');
+
+  // Stores
+  ht('st-h2', stores?.heading);
+  tx('st-lead', stores?.leadText);
+  document.getElementById('store-grid').innerHTML = (stores?.stores || [])
+    .filter(s => s.active)
+    .map(s => `
+      <a href="${s.url}" target="_blank" rel="noopener" class="store-btn">
+        <div class="store-icon">${s.emoji || '📚'}</div>
+        <div><div class="store-lbl">Available on</div><div class="store-name">${s.name}</div></div>
+      </a>`).join('');
+
+  // Events
+  ht('ev-h2', events?.heading);
+  tx('ev-lead', events?.leadText);
+  const evList = (events?.events || []).filter(e => e.active);
+  const eg = document.getElementById('ev-grid');
+  if (!evList.length) {
+    eg.innerHTML = '<div class="no-ev">No events scheduled yet — check back soon.</div>';
+  } else {
+    eg.innerHTML = evList.map((e, i) => {
+      const pct = e.totalSeats ? Math.round((e.seatsBooked / e.totalSeats) * 100) : 0;
+      const avail = e.totalSeats ? `${e.totalSeats - e.seatsBooked} of ${e.totalSeats} seats left` : 'Open registration';
+      return `<div class="ev-card reveal">
+        <div class="ev-banner">
+          ${e.bannerImage ? `<img src="${e.bannerImage}" alt="${e.title}"/>` : '<div class="ev-ph">✦</div>'}
+          <div class="ev-badge">${e.type}</div>
+          <div class="ev-seats-bar"><div class="ev-seats-fill" style="width:${pct}%"></div></div>
+        </div>
+        <div class="ev-body">
+          <div class="ev-date">${e.dateDisplay}${e.location ? ' · ' + e.location : ''}</div>
+          <div class="ev-title">${e.title}</div>
+          <div class="ev-desc">${e.description}</div>
+          <div class="ev-footer">
+            <div><div class="ev-price">${e.price}</div><div class="ev-avail">${avail}</div></div>
+            <button class="btn btn-filled" style="padding:10px 18px;font-size:.73rem" onclick="openBooking(${i})">Book Now</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // FAQ
+  ht('fq-h2', faq?.heading);
+  document.getElementById('acc').innerHTML = (faq?.items || [])
+    .filter(f => f.active !== false)
+    .map(f => `
+      <div class="acc-item">
+        <button class="acc-btn" aria-expanded="false" onclick="toggleAcc(this)">
+          <span>${f.question}</span><div class="acc-icon">+</div>
+        </button>
+        <div class="acc-body"><div class="acc-inner"><div class="acc-pad">${f.answer}</div></div></div>
+      </div>`).join('');
+
+  // Contact (public info only)
+  ht('ct-h2', contact?.heading);
+  tx('ct-lead', contact?.leadText);
+  tx('c-loc', contact?.locationDisplay);
+  const sr = document.getElementById('social-row');
+  sr.innerHTML = (contact?.socialLinks || []).filter(s => s.active)
+    .map(s => `<a class="soc-link" href="${s.url}" target="_blank" rel="noopener">${s.platform}</a>`).join('');
+
+  initReveal();
+}
+
+// ── PRIVATE CONTACT HINTS FROM WORKER ──────
+// Fetches only masked info — full details never in browser
+async function loadPrivateContactHints() {
+  try {
+    const res = await fetch(`${WORKER}/api/contact-hint`);
+    if (!res.ok) return;
+    const d = await res.json();
+    if (d.whatsappLink) {
+      document.getElementById('c-wa-row').style.display = 'flex';
+      const waEl = document.getElementById('c-wa-link');
+      waEl.href = d.whatsappLink;
+      waEl.textContent = d.whatsappMasked || 'Chat on WhatsApp';
+    }
+    if (d.emailDomain) {
+      document.getElementById('c-email-hint').textContent = `via form (${d.emailDomain})`;
+    }
+  } catch(e) { /* Worker not configured yet — silent fail */ }
+}
+
+// ── NAV ────────────────────────────────────
+function initNav() {
+  window.addEventListener('scroll', () =>
+    document.getElementById('nav').classList.toggle('solid', scrollY > 50));
+  document.getElementById('hbg').addEventListener('click', function() {
+    this.classList.toggle('open');
+    document.getElementById('mob').classList.toggle('open');
+  });
+  document.querySelectorAll('.ml').forEach(a => a.addEventListener('click', () => {
+    document.getElementById('hbg').classList.remove('open');
+    document.getElementById('mob').classList.remove('open');
+  }));
+}
+
+// ── ACCORDION ──────────────────────────────
+function toggleAcc(btn) {
+  const open = btn.getAttribute('aria-expanded') === 'true';
+  document.querySelectorAll('.acc-btn').forEach(b => { b.setAttribute('aria-expanded','false'); b.nextElementSibling.classList.remove('open'); });
+  if (!open) { btn.setAttribute('aria-expanded','true'); btn.nextElementSibling.classList.add('open'); }
+}
+
+// ── BOOKING ────────────────────────────────
+async function openBooking(idx) {
+  const evList = (C.events?.events || []).filter(e => e.active);
+  const ev = evList[idx];
+  currentEventIdx = idx;
+  document.getElementById('bk-ev-name').textContent = ev.title;
+  document.getElementById('bk-price-show').textContent = ev.price;
+  document.getElementById('bk-form-wrap').style.display = 'block';
+  document.getElementById('bk-ok').style.display = 'none';
+  document.getElementById('bk-name').value = '';
+  document.getElementById('bk-email').value = '';
+  document.getElementById('bk-phone').value = '';
+  bookingRef = null;
+
+  // Get payment methods from Worker
+  let methods = [{ type: 'Venue', label: 'Pay at Venue', detail: 'Arrive 15 minutes early. Pay at the registration desk.' }];
+  try {
+    const res = await fetch(`${WORKER}/api/booking-intent`, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ eventTitle: ev.title, name: 'preview', email: 'preview@x.com', seats: 1 })
+    });
+    if (res.ok) {
+      const d = await res.json();
+      if (d.paymentMethods) methods = d.paymentMethods;
+      bookingRef = d.bookingRef;
+    }
+  } catch(e) {}
+
+  window._payMethods = methods;
+  document.getElementById('pay-opts').innerHTML = methods.map((m, i) => `
+    <label class="pay-opt${i===0?' sel':''}" onclick="selPay(this,'${m.type}')">
+      <input type="radio" name="pm" value="${m.type}"${i===0?' checked':''}> ${m.label}
+    </label>`).join('');
+  const db = document.getElementById('pay-detail');
+  db.textContent = methods[0]?.detail || ''; db.className = 'pay-detail' + (methods[0] ? ' show' : '');
+  document.getElementById('bk-overlay').classList.add('open');
+}
+
+function selPay(el, type) {
+  document.querySelectorAll('.pay-opt').forEach(o => o.classList.remove('sel')); el.classList.add('sel');
+  const m = (window._payMethods || []).find(x => x.type === type);
+  const db = document.getElementById('pay-detail');
+  if (m) { db.textContent = m.detail; db.className = 'pay-detail show'; }
+  else db.className = 'pay-detail';
+}
+
+async function confirmBooking() {
+  const name = document.getElementById('bk-name').value.trim();
+  const email = document.getElementById('bk-email').value.trim();
+  if (!name || !email) { alert('Please enter your name and email.'); return; }
+
+  const btn = document.getElementById('bk-confirm-btn');
+  btn.textContent = 'Confirming…'; btn.disabled = true;
+
+  try {
+    const paymentMethod = document.querySelector('.pay-opt.sel input')?.value || 'Venue';
+    const evList = (C.events?.events || []).filter(e => e.active);
+    const ev = evList[currentEventIdx];
+    const seats = document.getElementById('bk-seats').value;
+
+    if (bookingRef) {
+      await fetch(`${WORKER}/api/confirm-booking`, {
+        method: 'POST', headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ ref: bookingRef, name, email, paymentMethod, seats, eventTitle: ev?.title })
+      });
+    }
+  } catch(e) {}
+
+  document.getElementById('bk-ref-display').textContent = bookingRef ? `Booking Ref: ${bookingRef}` : '';
+  document.getElementById('bk-form-wrap').style.display = 'none';
+  document.getElementById('bk-ok').style.display = 'block';
+  btn.textContent = 'Confirm Booking →'; btn.disabled = false;
+}
+
+function closeModal() { document.getElementById('bk-overlay').classList.remove('open'); }
+
+// ── CONTACT FORM ───────────────────────────
+async function sendContact(e) {
+  e.preventDefault();
+  const btn = document.getElementById('cf-btn');
+  const status = document.getElementById('cf-status');
+  btn.textContent = 'Sending…'; btn.disabled = true;
+  status.style.display = 'none';
+  try {
+    const res = await fetch(`${WORKER}/api/contact`, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ name: document.getElementById('cf-name').value, email: document.getElementById('cf-email').value, message: document.getElementById('cf-msg').value })
+    });
+    const d = await res.json();
+    if (d.success) {
+      status.textContent = '✓ Message sent successfully!';
+      status.style.color = 'var(--acc-l)'; status.style.display = 'block';
+      e.target.reset();
+    } else { throw new Error(d.error); }
+  } catch(err) {
+    status.textContent = err.message || 'Something went wrong. Please try again.';
+    status.style.color = '#f87171'; status.style.display = 'block';
+  }
+  btn.textContent = 'Send Message →'; btn.disabled = false;
+}
+
+// ── REVEAL ─────────────────────────────────
+function initReveal() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: .1 });
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => obs.observe(el));
+}
+
+function goAdmin() { window.location.href = './admin.html'; }
+
+boot();
+</script>
+</body>
+</html>

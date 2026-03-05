@@ -1,0 +1,9 @@
+{
+  "heading": "Common *questions*",
+  "items": [
+    { "question": "Who is this book written for?", "answer": "Anyone who feels capable of more but isn't sure how to get there — professional, entrepreneur, student, or homemaker. The principles are universally applicable.", "active": true },
+    { "question": "Is there an audiobook version?", "answer": "Yes! Narrated by the author, available on Audible and Spotify. Hearing the words in the author's own voice adds a deeply personal dimension.", "active": true },
+    { "question": "How do I book a workshop?", "answer": "Click 'Book Now' on any event card. Fill in your details, choose a payment method, and you'll receive confirmation within 24 hours.", "active": true },
+    { "question": "Are workshops available online?", "answer": "Yes — webinars run via Zoom and are recorded for attendees who register but cannot attend live.", "active": true }
+  ]
+}
