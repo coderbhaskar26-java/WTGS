@@ -1,9 +1,0 @@
-{
-  "heading": "Available *everywhere* books are sold",
-  "leadText": "Choose your preferred platform and start reading today.",
-  "stores": [
-    { "name": "Amazon", "emoji": "📦", "url": "https://amazon.in", "active": true },
-    { "name": "Flipkart", "emoji": "📗", "url": "https://flipkart.com", "active": true },
-    { "name": "Notion Press", "emoji": "📘", "url": "https://notionpress.com", "active": true }
-  ]
-}
